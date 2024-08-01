@@ -1,4 +1,4 @@
-const BACKGROUND_COLORS_ARRAY = ['blue', 'cyan', 'gold', 'gray', 'green', 'magenta', 'orange', 'red', 'white', 'yellow'];
+const BACKGROUND_COLORS_ARRAY = ['blue', 'cyan', 'gold', 'green', 'magenta', 'orange', 'red', 'yellow'];
 
 const randomColorIndex = Math.floor(Math.random() * BACKGROUND_COLORS_ARRAY.length)
 
