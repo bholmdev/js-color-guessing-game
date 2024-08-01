@@ -1,4 +1,5 @@
 const COLORS_ARRAY = ['blue', 'cyan', 'gold', 'gray', 'green', 'magenta', 'orange', 'red', 'white', 'yellow'];
+const JOINED_COLORS_ARRAY = COLORS_ARRAY.join(", ")
 
 function runGame() {
     const targetIndex = Math.floor(Math.random() * COLORS_ARRAY.length);
@@ -9,8 +10,10 @@ function runGame() {
     let correct = false;
     let numTries = 0;
 
+    document.body.style.background = randomBackgroundColor;
+
     do {
-        guess = prompt("I am thinking of one of these colors:\n\n" + COLORS_ARRAY + "\n\nWhat color am I thinking of?\n");
+        guess = prompt("I am thinking of one of these colors:\n\n" + JOINED_COLORS_ARRAY + "\n\nWhat color am I thinking of?\n").toLowerCase();
 
         ++numTries;
 
@@ -21,15 +24,16 @@ function runGame() {
 
         correct = checkGuess(guess, target)
     } while (!correct)
+    
+    document.body.style.background = guess;
 
-    alert("Congratulations! You guessed the correct color of " + target  + ".\n\nYou guessed it in " + numTries + " tries!");
-}
+    setTimeout(() => { alert("Congratulations! You guessed the correct color of " + target  + ".\n\nYou guessed it in " + numTries + " tries!"); }, 100) }
 
 function checkGuess(guess, target) {
     let correct = false;
 
     if (!COLORS_ARRAY.includes(guess)) {
-        alert("Please choose one of the following colors:\n\n" + COLORS_ARRAY + "...");
+        alert("Please choose one of the following colors:\n\n" + JOINED_COLORS_ARRAY + "...");
     } else if (guess > target) {
         alert("Your color is alphabetically lower than the target color.");
     } else if (guess < target) {
