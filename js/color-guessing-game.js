@@ -14,13 +14,12 @@ function runGame() {
 
     do {
         guess = prompt("I am thinking of one of these colors:\n\n" + JOINED_COLORS_ARRAY + "\n\nWhat color am I thinking of?\n").toLowerCase();
+        if (guess === null || guess === undefined) {
+            alert("Giving up already?");
+            return;
+        }
 
         ++numTries;
-
-        if (guess === null) {
-            alert("Giving up already?");
-            return
-        }
 
         correct = checkGuess(guess, target)
     } while (!correct)
